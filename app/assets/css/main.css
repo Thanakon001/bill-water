@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   Modern Form & Input Styling
+   ======================================== */
+
+:root {
+  --input-border: #e2e8f0;
+  --input-focus-border: #6366f1;
+  --input-focus-ring: rgba(99, 102, 241, 0.15);
+  --input-bg: #ffffff;
+  --input-bg-hover: #f8fafc;
+  --label-color: #475569;
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Modern Form Control Wrapper */
+@layer components {
+  .form-control {
+    @apply relative;
+  }
+
+  /* Modern Label Styling */
+  .form-control .label {
+    @apply pb-2;
+  }
+
+  .form-control .label-text {
+    @apply text-slate-600 font-medium text-sm tracking-wide;
+  }
+
+  /* Modern Input Base */
+  .input-modern {
+    @apply w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white/80
+           text-slate-800 text-base font-medium
+           transition-all duration-300 ease-out
+           placeholder:text-slate-400 placeholder:font-normal
+           backdrop-blur-sm;
+  }
+
+  .input-modern:hover {
+    @apply border-slate-300 bg-white shadow-sm;
+  }
+
+  .input-modern:focus {
+    @apply border-indigo-500 bg-white outline-none
+           ring-4 ring-indigo-500/10 shadow-lg shadow-indigo-500/5;
+  }
+
+  /* Select Modern */
+  .select-modern {
+    @apply w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white/80
+           text-slate-800 text-base font-medium
+           transition-all duration-300 ease-out
+           cursor-pointer appearance-none backdrop-blur-sm;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    padding-right: 2.5rem;
+  }
+
+  .select-modern:hover {
+    @apply border-slate-300 bg-white shadow-sm;
+  }
+
+  .select-modern:focus {
+    @apply border-indigo-500 bg-white outline-none
+           ring-4 ring-indigo-500/10 shadow-lg shadow-indigo-500/5;
+  }
+
+  /* Modern Card Form */
+  .card-modern {
+    @apply bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl 
+           border border-white/20 overflow-hidden;
+  }
+
+  .card-modern .card-body {
+    @apply p-8;
+  }
+
+  /* Form Section Divider */
+  .form-section {
+    @apply relative pb-6 mb-6;
+  }
+
+  .form-section::after {
+    content: "";
+    @apply absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent;
+  }
+
+  .form-section-title {
+    @apply flex items-center gap-3 text-lg font-semibold text-slate-800 mb-5;
+  }
+
+  .form-section-title .icon {
+    @apply w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 
+           flex items-center justify-center text-white shadow-lg shadow-indigo-500/30;
+  }
+
+  /* Modern Button Styles */
+  .btn-modern {
+    @apply relative px-6 py-3.5 rounded-xl font-semibold text-white
+           transition-all duration-300 ease-out
+           shadow-lg hover:shadow-xl
+           transform hover:-translate-y-0.5 active:translate-y-0
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .btn-modern::before {
+    content: "";
+    @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+
+  .btn-modern:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-modern span {
+    @apply relative z-10 flex items-center justify-center gap-2;
+  }
+
+  .btn-modern-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .btn-modern-success::before {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+
+  /* Input Group with Icon */
+  .input-group-modern {
+    @apply relative;
+  }
+
+  .input-group-modern .input-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 
+           transition-colors duration-300 pointer-events-none;
+  }
+
+  .input-group-modern .input-modern {
+    @apply pl-12;
+  }
+
+  .input-group-modern:focus-within .input-icon {
+    @apply text-indigo-500;
+  }
+
+  /* Preview Card */
+  .preview-card {
+    @apply relative bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 
+           rounded-2xl p-6 overflow-hidden;
+  }
+
+  .preview-card::before {
+    content: "";
+    @apply absolute inset-0 bg-white/40 backdrop-blur-sm;
+  }
+
+  .preview-card-content {
+    @apply relative z-10;
+  }
+
+  /* Animated Input Focus Effect */
+  .input-animated {
+    @apply relative;
+  }
+
+  .input-animated::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 
+           bg-gradient-to-r from-indigo-500 to-purple-500
+           transition-all duration-300 ease-out;
+    transform: translateX(-50%);
+  }
+
+  .input-animated:focus-within::after {
+    @apply w-full;
+  }
+
+  /* Number Input Styling */
+  .input-number {
+    @apply font-mono tracking-wider;
+  }
+
+  /* Shake Animation for Invalid */
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-4px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(4px);
+    }
+  }
+
+  .input-error {
+    @apply border-red-400 bg-red-50;
+    animation: shake 0.5s ease-in-out;
+  }
+
+  /* Pulse Animation for Success */
+  @keyframes pulse-success {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+  }
+
+  .input-success {
+    @apply border-emerald-400;
+    animation: pulse-success 1s ease-out;
+  }
+
+  /* Enhanced Alert Styling */
+  .alert-modern {
+    @apply flex items-center gap-4 p-5 rounded-xl border backdrop-blur-sm;
+  }
+
+  .alert-modern-warning {
+    @apply bg-amber-50/80 border-amber-200 text-amber-800;
+  }
+
+  .alert-modern-info {
+    @apply bg-blue-50/80 border-blue-200 text-blue-800;
+  }
+
+  /* Floating Label Style */
+  .floating-label {
+    @apply relative;
+  }
+
+  .floating-label input {
+    @apply peer;
+  }
+
+  .floating-label label {
+    @apply absolute left-4 top-4 text-slate-400 text-base font-medium
+           transition-all duration-200 ease-out pointer-events-none
+           peer-focus:-top-2 peer-focus:left-3 peer-focus:text-xs 
+           peer-focus:text-indigo-500 peer-focus:bg-white peer-focus:px-1
+           peer-placeholder-shown:top-4 peer-placeholder-shown:text-base;
+  }
+
+  .floating-label input:not(:placeholder-shown) + label {
+    @apply -top-2 left-3 text-xs text-indigo-500 bg-white px-1;
+  }
+
+  /* Grid Form Layout */
+  .form-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+
+  .form-grid-full {
+    @apply col-span-1 md:col-span-2;
+  }
+}
